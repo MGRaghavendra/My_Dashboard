@@ -1,0 +1,75 @@
+.main-layout {
+  height: 100%;
+}
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+
+.logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+
+nz-header {
+  background: #fff;
+  padding: 0;
+  position: relative;
+}
+
+nz-content {
+  margin: 0 16px;
+}
+
+nz-breadcrumb {
+  margin: 16px 0;
+}
+
+.inner-content {
+  padding: 24px;
+  background: #fff;
+  min-height: 360px;
+}
+
+nz-footer {
+  text-align: center;
+}
+
+.header_right_container {
+  display: inline-block;
+  position: absolute;
+  right: 2rem;
+  min-width: 7rem;
+  .header_right_container_inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .temperature_container {
+      .temperature_inner {
+        position: relative;
+        .temperatureImage {
+          height: 42px;
+          width: 42px;
+          border-radius: 4px;
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .temperature_text {
+          position: absolute;
+          font-weight: bold;
+          bottom: 32%;
+          right: 90%;
+        }
+      }
+    }
+  }
+}
