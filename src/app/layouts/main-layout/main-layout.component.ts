@@ -19,7 +19,6 @@ import { AuthService } from '../../auth/auth.service';
 @Component({
   selector: 'app-main-layout',
   imports: [
-    DecimalPipe,
     NzBadgeModule,
     NzBreadCrumbModule,
     NzPopoverModule,
@@ -33,26 +32,11 @@ import { AuthService } from '../../auth/auth.service';
   styleUrl: `./main-layout.component.scss`,
 })
 export class MainLayoutComponent implements OnInit {
-  isCollapsed = true;
-  private geolocationService: GeoLocationService = inject(GeoLocationService);
-  private weatherApiService: WeatherAPIService = inject(WeatherAPIService);
+  // isCollapsed = true;
   private authService: AuthService = inject(AuthService);
-  private geocurrentPosition$: Observable<GeolocationPosition> =
-    this.geolocationService.getCurrentPosition();
-  private getCurrentWeather$!: Observable<WeatherResponse>;
-  public temperatureCelsius: number = 0;
   public settingpopovervisible: boolean = false;
 
   ngOnInit(): void {
-    this.geocurrentPosition$.subscribe((position) => {
-      this.getCurrentWeather$ = this.weatherApiService.getCurrentWeather(
-        position.coords.latitude,
-        position.coords.longitude
-      );
-      this.getCurrentWeather$.subscribe((data) => {
-        this.temperatureCelsius = data.main.temp - 273.15;
-      });
-    });
   }
 
   settingpopoverChange(value: boolean): void {

@@ -1,5 +1,12 @@
 .main-layout {
-  height: 100%;
+ height: 100%;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ .content_layout{
+  flex: 1;
+  min-height: auto;
+ }
 }
 .trigger {
   font-size: 18px;
@@ -73,3 +80,13 @@ nz-footer {
     }
   }
 }
+
+// .content_layout{
+//   position: relative;
+//   min-height: auto;
+// }
+// .content_footer{
+//   position: absolute;
+//   bottom: 0;
+//   width: 100%;
+// }

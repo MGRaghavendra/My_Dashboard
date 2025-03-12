@@ -1,0 +1,10 @@
+.home_page_layout{
+    display: flex;
+    flex-direction: row;
+    .home_page_layout_left{
+        flex: 1;
+    }
+    .home_page_layout_right{
+        min-width: 20%;
+    }
+}
