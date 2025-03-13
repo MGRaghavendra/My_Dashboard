@@ -24,6 +24,7 @@
      border-radius: 50%;
      overflow: hidden;
      backdrop-filter: blur(0.5px);
+     flex-direction: column;
      .temperatureImage {
        height: 42px;
        width: 42px;
@@ -37,6 +38,10 @@
        font-size: 1.2rem;
       //  bottom: 32%;
       //  right: 90%;
+     }
+     .current_date{
+      font-size: 1rem;
+      font-weight: 500;
      }
    }
  }

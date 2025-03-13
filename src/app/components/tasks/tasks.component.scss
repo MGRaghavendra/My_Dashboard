@@ -18,14 +18,17 @@
     }
     .tasks {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
       border-radius: 7px;
+      padding-right: 10px;
       .task {
         width: 100%;
         padding: 7px 10px;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+        // box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+        &.active{ text-decoration: line-through;}
       }
+      input{visibility: hidden;}
     }
   }
 }

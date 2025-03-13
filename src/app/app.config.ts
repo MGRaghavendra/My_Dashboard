@@ -15,6 +15,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 
+
 registerLocaleData(en);
 
 export const appConfig: ApplicationConfig = {

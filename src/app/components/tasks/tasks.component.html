@@ -1,10 +1,15 @@
 <div class="tasks_container">
     <div class="tasks_inner">
         <div class="tasks_header">Tasks </div>
-        <div class="tasks">
-            <div class="task">1. Task 1</div>
-            <div class="task">2. Task 2</div>
-            <div class="task">3. Task 3</div>
-        </div>
+        <div class="tasks" *ngFor="let item of tempTaskArr">
+            <label class="task" [for]="'task-' + item.id" [class]="item.isChecked ? 'active' : ''">
+              <input type="checkbox" [id]="'task-' + item.id" [(ngModel)]="item.isChecked">
+              <nz-icon nzType="check-circle"  [style.color]=" item.isChecked ? '#196efc' : '#268bfc'" [nzTheme]="item.isChecked ? 'fill' : 'twotone'" /> 
+              Task {{ item.id }} 
+            </label>
+            <nz-icon nzType="star" [style.color]=" item.isChecked ? '#ccc000' : '#ff5733'" [nzTheme]="item.isChecked ? 'fill' : 'twotone'" /> 
+          </div>
     </div>
 </div>
+
+
