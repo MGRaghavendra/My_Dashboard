@@ -1,14 +1,14 @@
 <nz-layout class="main-layout">
-    <nz-header>
-      <!-- <span
+  <nz-header>
+    <!-- <span
         class="trigger"
         nz-icon
         [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
         (click)="isCollapsed = !isCollapsed"
       ></span> -->
-      <div class="header_right_container">
-        <div class="header_right_container_inner">
-          <!-- <div class="temperature_container">
+    <div class="header_right_container">
+      <div class="header_right_container_inner">
+        <!-- <div class="temperature_container">
             <div class="temperature_inner">
               <img
                 src="./images/day-and-night.png"
@@ -20,28 +20,27 @@
               >
             </div>
           </div> -->
-         
-          
-          <button
-            nz-button
-            nzType="primary"
-            nz-popover
-            nzPopoverTitle="Settings"
-            nzPopoverTrigger="click"
-            [nzPopoverContent]="settingTemplate"
-            [(nzPopoverVisible)]="settingpopovervisible"
-            (nzPopoverVisibleChange)="settingpopoverChange($event)"
-          >
-            <nz-icon nzType="setting" nzTheme="twotone" />
-          </button>
-          <ng-template #settingTemplate>
-            <a (click)="logout()">logout</a>
-          </ng-template>
-        </div>
+
+        <button
+          nz-button
+          nzType="primary"
+          nz-popover
+          nzPopoverTitle="Settings"
+          nzPopoverTrigger="click"
+          [nzPopoverContent]="settingTemplate"
+          [(nzPopoverVisible)]="settingpopovervisible"
+          (nzPopoverVisibleChange)="settingpopoverChange($event)"
+        >
+          <nz-icon nzType="setting" nzTheme="twotone" />
+        </button>
+        <ng-template #settingTemplate>
+          <a (click)="logout()">logout</a>
+        </ng-template>
       </div>
-    </nz-header>
-    <nz-content class="content_layout">
-        <router-outlet />
-    </nz-content>
-    <nz-footer class="content_footer">Ant Design ©2020 Implement By Angular</nz-footer>
+    </div>
+  </nz-header>
+  <nz-content class="content_layout">
+    <router-outlet />
+  </nz-content>
+  <nz-footer class="content_footer">Footer</nz-footer>
 </nz-layout>

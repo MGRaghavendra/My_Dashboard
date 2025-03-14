@@ -1,0 +1,36 @@
+// Base (Mobile First)
+$breakpoint-xs: 0; // for small devices like mobile phones
+$breakpoint-sm: 576px; // for small screens (phones, small tablets)
+$breakpoint-md: 768px; // for medium screens (tablets)
+$breakpoint-lg: 992px; // for larger screens (small desktops)
+$breakpoint-xl: 1200px; // for extra large screens (larger desktops)
+$breakpoint-xxl: 1400px; // for super large screens
+
+// Media Queries
+@mixin media-query($breakpoint) {
+  @if $breakpoint == "xs" {
+    @media (max-width: #{$breakpoint-xs}) {
+      @content;
+    }
+  } @else if $breakpoint == "sm" {
+    @media (max-width: #{$breakpoint-sm}) {
+      @content;
+    }
+  } @else if $breakpoint == "md" {
+    @media (max-width: #{$breakpoint-md}) {
+      @content;
+    }
+  } @else if $breakpoint == "lg" {
+    @media (max-width: #{$breakpoint-lg}) {
+      @content;
+    }
+  } @else if $breakpoint == "xl" {
+    @media (max-width: #{$breakpoint-xl}) {
+      @content;
+    }
+  } @else if $breakpoint == "xxl" {
+    @media (max-width: #{$breakpoint-xxl}) {
+      @content;
+    }
+  }
+}

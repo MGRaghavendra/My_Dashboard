@@ -11,7 +11,7 @@ import { DecimalPipe } from '@angular/common';
   templateUrl: './weather.component.html',
   styleUrl: './weather.component.scss',
 })
-export class WeatherComponent implements OnInit{
+export class WeatherComponent implements OnInit {
   private geolocationService: GeoLocationService = inject(GeoLocationService);
   private weatherApiService: WeatherAPIService = inject(WeatherAPIService);
   private geocurrentPosition$: Observable<GeolocationPosition> =
@@ -19,7 +19,7 @@ export class WeatherComponent implements OnInit{
   private getCurrentWeather$!: Observable<WeatherResponse>;
   public temperatureCelsius: number = 0;
   public today_date: any;
- 
+
   ngOnInit(): void {
     this.geocurrentPosition$.subscribe((position) => {
       this.getCurrentWeather$ = this.weatherApiService.getCurrentWeather(
@@ -30,7 +30,12 @@ export class WeatherComponent implements OnInit{
         this.temperatureCelsius = data.main.temp - 273.15;
       });
     });
-    this.today_date = new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: '2-digit' }).replace(',', '');
-
+    this.today_date = new Date()
+      .toLocaleDateString('en-US', {
+        weekday: 'short',
+        month: 'short',
+        day: '2-digit',
+      })
+      .replace(',', '');
   }
 }

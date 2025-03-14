@@ -1,15 +1,31 @@
 <div class="tasks_container">
-    <div class="tasks_inner">
-        <div class="tasks_header">Tasks </div>
-        <div class="tasks" *ngFor="let item of tempTaskArr">
-            <label class="task" [for]="'task-' + item.id" [class]="item.isChecked ? 'active' : ''">
-              <input type="checkbox" [id]="'task-' + item.id" [(ngModel)]="item.isChecked">
-              <nz-icon nzType="check-circle"  [style.color]=" item.isChecked ? '#196efc' : '#268bfc'" [nzTheme]="item.isChecked ? 'fill' : 'twotone'" /> 
-              Task {{ item.id }} 
-            </label>
-            <nz-icon nzType="star" [style.color]=" item.isChecked ? '#ccc000' : '#ff5733'" [nzTheme]="item.isChecked ? 'fill' : 'twotone'" /> 
-          </div>
+  <div class="tasks_inner">
+    <div class="tasks_header">Tasks</div>
+    <div class="task" *ngFor="let item of tempTaskArr">
+      <label
+        class="task_label"
+        [for]="'task-' + item.id"
+        [class]="item.isChecked ? 'active' : ''"
+      >
+        <input
+          type="checkbox"
+          [id]="'task-' + item.id"
+          [(ngModel)]="item.isChecked"
+        />
+        <nz-icon
+          nzType="check-circle"
+          [style.color]="item.isChecked ? '#196efc' : '#268bfc'"
+          [nzTheme]="item.isChecked ? 'fill' : 'twotone'"
+        />
+        Task {{ item.id }}
+      </label>
+      <span class="due_duration">due: {{ item.dueDuration }}</span>
+      <nz-icon
+        nzType="star"
+        [style.color]="item.isPinned ? '#196efc' : '#ff5733'"
+        [nzTheme]="item.isPinned ? 'fill' : 'twotone'"
+        style="font-size: 1.1rem"
+      />
     </div>
+  </div>
 </div>
-
-

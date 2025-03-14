@@ -1,10 +1,17 @@
-.home_page_layout{
-    display: flex;
-    flex-direction: row;
-    .home_page_layout_left{
-        flex: 1;
-    }
-    .home_page_layout_right{
-        min-width: 20%;
-    }
+@use "../../var" as *;
+
+.home_page_layout {
+  display: flex;
+  flex-direction: row;
+  padding-top: 1.5rem;
+  @include media-query("sm") {
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+  .home_page_layout_left {
+    flex: 1;
+  }
+  .home_page_layout_right {
+    min-width: 20%;
+  }
 }
