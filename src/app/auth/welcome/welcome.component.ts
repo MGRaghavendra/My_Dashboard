@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import {
   NonNullableFormBuilder,
   ReactiveFormsModule,
@@ -11,6 +11,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { AuthService } from '../auth.service';
 import { LocalStorageService } from '../../core/services/local-storage.service';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-welcome',
@@ -24,7 +25,7 @@ import { Router } from '@angular/router';
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.scss',
 })
-export class WelcomeComponent {
+export class WelcomeComponent implements OnInit, OnDestroy {
   private fb = inject(NonNullableFormBuilder);
   validateForm = this.fb.group({
     username: this.fb.control('', [Validators.required]),
@@ -37,19 +38,20 @@ export class WelcomeComponent {
   private authService: AuthService = inject(AuthService);
   private router: Router = inject(Router);
   isAuthenticated: boolean = false;
+  private loggedIn$: BehaviorSubject<boolean> = this.authService.loggedIn$;
 
   ngOnInit(): void {
     this.isAuthenticated = this.authService.isAuthenticated();
-    console.log(this.isAuthenticated);
     if (this.isAuthenticated) {
-      this.router.navigate(['']);
+      this.router.navigate(['/']);
     }
   }
 
   submitForm(): void {
     if (this.validateForm.valid) {
       this.localstorageService.setItem('loggedIn', 'true');
-      window.location.reload();
+      this.loggedIn$.next(true);
+      this.router.navigate(['/']);
     } else {
       Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {
@@ -58,5 +60,9 @@ export class WelcomeComponent {
         }
       });
     }
+  }
+
+  ngOnDestroy(): void {
+    this.loggedIn$.unsubscribe();
   }
 }

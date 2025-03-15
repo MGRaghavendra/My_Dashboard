@@ -1,20 +1,17 @@
 import { Injectable, inject } from '@angular/core';
 import { LocalStorageService } from '../core/services/local-storage.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private loggedIn: boolean = false;
   private localStorageService: LocalStorageService =
     inject(LocalStorageService);
-
-  constructor() {
-    this.loggedIn = this.localStorageService.getItem('loggedIn') === 'true';
-  }
+  public loggedIn$ = new BehaviorSubject<boolean>(this.isAuthenticated());
 
   isAuthenticated(): boolean {
-    return this.loggedIn;
+    return this.localStorageService.getItem('loggedIn') === 'true';
   }
 
   clearSession(): void {
